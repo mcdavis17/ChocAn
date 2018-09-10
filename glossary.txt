@@ -1,0 +1,29 @@
+Key Terms	Descriptions
+Chocoholics Anonymous (ChocAn)	An organization dedicated to helping members overcome addiction to chocolate in all its glorious forms
+ChocAn Data Center	The building where the main computer (server) of ChocAn is housed and data is run
+ChocAn Manager	A staff member of ChocAn, in a management position, who requires information about the services provided to members at any time of the week, as well as the fees to be paid to the providers
+ChocAn Operator	A staff member of ChocAn who uses the Data Center to add new members or provider, update member records and deleting a member or provider who resigns
+ChocAn Dietitian	A health-care professional who creates a specialized diet for each member and monitors their progress
+Exercise Expert	A health-care professional who creates a schedule for members based on available sessions
+Addiction	An obsession, compulsion or excessive physical or psychological dependence on some substance such as chocolate
+Chocolate	Delicious food produced from cacao beans. Available in many glorious forms
+Member	A person who is addicted to chocolate and has joined ChocAn to benefit from the services provided
+Member Number	A 9-digit number that uniquely identifies a ChocAn member
+Member Status	The status of a member may be Active (the member is up to date with payments and entitled to consultations) or Suspended (the member has not paid fees for at least a month and is not entitled to consultations)
+Membership Card	A plastic card embossed with the member’s name and number and incorporating a magnetic strip on which the same information is encoded
+Membership Fee	A monthly amount of money that a member must pay to ChocAn to be entitled to consultations and treatments with health care professionals
+Provider	A health-care professional who provides services to ChocAn members. Before providing a service, the provider can verify that the member has a valid membership card and is not suspended
+Provider Directory	An alphabetically ordered list of services provided and the corresponding service codes and fees
+Provider Number	A 9-digit number that uniquely identifies a ChocAn provider
+Provider Terminal	A specifically designed computer terminal, like a credit card device in a shop, incorporating a card reader that can read the magnetic strip on a member’s card, a keyboard, and a one-line display
+Provider Request	Request for the software product for the Provider Directory
+Consultation	An event where a provider implements a service to a member of ChocAn
+Treatment	A service given by a provider to a member of ChocAn to help their addiction
+Service	A classification of a treatment, consultation or session with a provider
+Service Code	A 6-digit code that corresponds to the service provided
+Accounts Payable	Report that lists every provider to be paid that week, number of consultations given and his or her total fee for that week
+Accounting Procedure	Procedure that is run at midnight each Friday at the ChocAn Data Center. It produces the EFT data and various reports. Can also be run by a ChocAn manager any time of the week
+Electronic Funds	A transaction in which an amount of money is transferred from one bank account to another via Transfer (EFT) the internet
+EFT data	Data to be used to transfer funds electronically from the ChocAn bank account to the providers’ bank account
+EFT Component	A component of the ChocAn Information System that will be implemented by a different organization. This component will ensure that each provider’s account is credited with the appropriate amount
+
