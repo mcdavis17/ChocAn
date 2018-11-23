@@ -1,3 +1,4 @@
+//prints current the date and then time
 package project4;
 
 import java.util.*;
@@ -8,19 +9,19 @@ public class setDateTime  {
 	int second;
 	int minute;
 	int hour;
-	int dayOfYear; 
+	int day; 
 	int dayOfMonth;
 	int dayOfWeek;
 	int month; 
 	int year;
-	int LocalDateTime LDT;
+	private LocalDateTime LDT;
 
 	public setDateTime ()  {
 		LDT = LocalDateTime.now();
 		second = -1;
 		minute = -1;
 		hour = -1;
-		dayOfYear = -1;
+		day = -1;
 		dayOfMonth = -1;
 		dayOfWeek = -1;
 		month = -1;
@@ -40,7 +41,7 @@ public class setDateTime  {
 	
 	public void setSecond(int e) { 
 		if (e >= 60) {
-			throw new NumberFormatException("Second value may not be greater than or equal to 60.")
+			throw new NumberFormatException("Second value may not be greater than or equal to 60.");
 		}
 		if (e < 0) {
 			throw new NumberFormatException("Second value must be positive.");
@@ -50,7 +51,7 @@ public class setDateTime  {
 	
 	public void setMinute (int m) {
 		if (m >= 60) {
-			throw new NumberFormatException("Minute value may not be greater than or equal to 60.")
+			throw new NumberFormatException("Minute value may not be greater than or equal to 60.");
 		}
 		if (m < 0) {
 			throw new NumberFormatException("Second value must be positive.");
@@ -69,23 +70,23 @@ public class setDateTime  {
 	}
 	
 	public void setDayOfYear(int d) {
-		if (a < 0) {
+		if (d < 0) {
 			throw new NumberFormatException("Day of year value must be positive.");	
 		}
-		if (a > 366) {
-			throw new NumberFomratException("Day of  year value must be less than 366.");
+		if (d > 366) {
+			throw new NumberFormatException("Day of  year value must be less than 366.");
 	}
 		day = d;
 	}
 	
 	public void setDayOfMonth(int dom) {
-		if ((getMonth() == 2) && (a > 0) && (a <= 28)) {
+		if ((getMonth() == 2) && (dom > 0) && (dom <= 28)) {
 			dayOfMonth = dom;
 		}
-		else if ((a <- 31) && (a > 0)) {
+		else if ((dom <= 31) && (dom > 0)) {
 			dayOfMonth = dom;
 		}
-		else if ((getMonth() == 4 || getMonth() == 6 || getMonth() == 9 || getMonth() == 11 && (a > 0) && (a <= 30))) {
+		else if ((getMonth() == 4 || getMonth() == 6 || getMonth() == 9 || getMonth() == 11 && (dom > 0) && (dom <= 30))) {
 			dayOfMonth = dom;
 		}
 		else {
@@ -165,4 +166,3 @@ public class setDateTime  {
 		setPrintTime();
 	}
 }
-
