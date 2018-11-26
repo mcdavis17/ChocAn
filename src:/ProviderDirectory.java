@@ -7,6 +7,8 @@ import java.util.Collections;
 import java.util.Objects;
 import java.io.IOException;
 
+//. Author: Caleb Davis
+
 public class ProviderDirectory extends service implements Comparable<ProviderDirectory> {
 	
 	public static ArrayList<ProviderDirectory> services = new ArrayList<ProviderDirectory>();
