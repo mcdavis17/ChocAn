@@ -51,7 +51,6 @@ public class ProviderDirectory extends service implements Comparable<ProviderDir
 	
 	//  Returns true if a certain service exists based on a given service code
 	public static service verifyCode(String code) {
-		System.out.println("VERIFYING CODE...");
 		for (int i = 0; i < services.size(); i++) {
 			if ( Objects.equals(services.get(i).getServiceNumber(), code) ) {
 				services.get(i);
