@@ -96,7 +96,7 @@ public class BillChocAn {
 		writer.write("Bill Report\n");
 		writer.write("\tCurrent Date and Time: " + setDateTime.getMonth() + "-" + setDateTime.getDayOfMonth() + "-" + setDateTime.getYear() );
 		writer.write("\n\tDate Service was Provided: " + userDate);
-		//writer.write("\tProvider Number: " + Provider.getProviderNum(provider) );
+		writer.write("\tProvider Number: " + Provider.getProviderNum(provider) );
 		writer.write("\n\tMember Number: " + num);
 		writer.write("\n\tService Code: " + code);
 		writer.write("\n\tComments: " + comments);
