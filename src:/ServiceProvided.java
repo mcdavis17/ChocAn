@@ -1,10 +1,12 @@
 package project4;
 
-//author: 
+//author: Calvin Clark
+
 public class ServiceProvided {
    private setDateTime currentDateTime;
    private setDateTime serviceDate;
    private ManageProvider provider;
+   private ProviderRecords providerNum;
    private ManageMember member;
    private Service service;
    private String comments;
@@ -13,6 +15,7 @@ public class ServiceProvided {
    // Default constructor.
    public ServiceProvided() {
    	provider = new ManageProvider();
+   	providerNum = new ProviderRecords();
    	member = new ManageMember();
    	currentDateTime = new setDateTime();
    	serviceDate = new setDateTime();
@@ -21,10 +24,11 @@ public class ServiceProvided {
    
    // Constructor that initializes the corresponding
    // fields in a ServiceProvided object.
-   public ServiceProvided(setDateTime today, setDateTime serviceTime, ManageProvider p, ManageMember m, Service s, String c) {
+   public ServiceProvided(setDateTime today, setDateTime serviceTime, ManageProvider p, ProviderRecords pn, ManageMember m, Service s, String c) {
    	currentDateTime = today;
    	serviceDate = serviceTime;
    	provider = p;
+   	providerNum = pn;
    	member = m;
    	service = s;
    	comments = c;
@@ -51,10 +55,13 @@ public class ServiceProvided {
    }
    
    // Method that returns provider.
-   public ManageProvider getProvider() {
+   public ManageProvider getManageProvider() {
    	return provider;
    }
    
+   public ProviderRecords getProviderNum() {
+		return providerNum;
+	}
    // Method that returns service.
    public Service getService() {
    	return service;
@@ -81,6 +88,10 @@ public class ServiceProvided {
    public void setProvider(ManageProvider p) {
    	provider = p;
    }
+   
+   public void getProviderNum(ProviderRecords pn) {
+		providerNum = pn;
+	}
    
    // Method that sets the service
    public void setService(Service s) {
@@ -121,4 +132,5 @@ public class ServiceProvided {
 		currentDateTime.setPrintDateTime();
 		System.out.println(")");
    }
+
 }
