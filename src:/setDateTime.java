@@ -4,7 +4,7 @@ package project4;
 import java.util.*;
 import java.time.*;
 
-public class setDateTime  {
+public class SetDateTime  {
 
 	int second;
 	int minute;
@@ -16,7 +16,7 @@ public class setDateTime  {
 	int year;
 	private LocalDateTime LDT;
 
-	public setDateTime ()  {
+	public SetDateTime ()  {
 		LDT = LocalDateTime.now();
 		second = -1;
 		minute = -1;
