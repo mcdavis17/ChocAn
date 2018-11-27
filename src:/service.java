@@ -3,15 +3,20 @@ package project4;
 
 import java.util.*;
 
-public class service {
+public class Service {
 	double serviceFee;
 	String serviceName;
 	String serviceNumber;
 	
-	public service() {
+	public Service() {
 		
 	}
 	
+	public Service(String service, String code, double fee) {
+		serviceName = service;
+		serviceNumber = code;
+		serviceFee = fee;  
+	}
 	public void setServiceFee(double fee) {
 		if (fee < 0) {
 			throw new NumberFormatException("Fee value must be positive.");
