@@ -1,6 +1,7 @@
 package project4;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,51 +12,118 @@ import java.util.Scanner;
 
 public class BillChocAn {
 	
+	ManageMember member;
+	Service service;
+	
 	private String provNum;
 	private String memNum;
 	private String serviceCode;
 	private String dos;
 	private double fee;
 	private String comments;
-	private ArrayList<ManageProvider> providers = new ArrayList<ManageProvider> ();
+	private String input;
+	
 	private ArrayList<ManageMember> members = new ArrayList<ManageMember> ();
 	private ArrayList<Service> services = new ArrayList<Service> ();
-	
-	// Constructor which sets each of the ArrayLists
-	public BillChocAn(ArrayList<ManageProvider> providerList, ArrayList<ManageMember> memberList, ArrayList<Service> serviceList) {
-		providers = providerList;
+
+	//  Constructor which sets each of the ArrayLists
+	public BillChocAn(String pNum, ArrayList<ManageMember> memberList, ArrayList<Service> serviceList) {
+		provNum = pNum;
 		members = memberList;
 		services = serviceList;
 	}
 	
-	//  adds service to members and creates the billreport
-	public void billChocAnOption(Scanner scanner) throws IOException {
-		ManageProvider provider;
-		ManageMember member;
-		Service service;
-		
-		provider = getProvider(scanner);
-		verifyExistance(provider);
+	//  Creates a file with the containing the bill report for a service given
+	public void billChocAnOption(Scanner scanner) {
 		
 		member = getMember(scanner);
-		verifyExistance(member);
 		verifyValidity(member);
-		
 		getDOS(scanner);
-		
 		printDirectory(scanner);
-		
 		service = getService(scanner);
-		verifyExistance(service);
-		System.out.println( "The code " + serviceCode + " is for " + service.getServiceName() );
-		
+		doubleCheckService(scanner);
 		getComments(scanner);
-		
 		writeToFile();
-		
 		fee = service.getServiceFee();
-		System.out.println("Fee is: " + fee );
+		System.out.println("Fee is: " + fee + "\n");
+		System.out.println("File \"" + dos + "_Bill_Report.txt\" has been created with the information.\n");
 		
+	}
+	
+//	GETS THE MEMBER BASED ON THE MEMBER NUMBER WHICH THE PROVIDER INPUTS
+	public ManageMember getMember(Scanner scanner) {
+		boolean activeQuestions = true;
+		System.out.println("Enter the member's number:");
+		memNum = scanner.next();
+		do {
+			for (int i = 0; i < members.size(); i++) {
+				if (Objects.equals(memNum, members.get(i).findNumber())) {
+					return members.get(i);
+				}
+			}
+			System.out.println("Enter a valid 9 digit member number or 'Q' to quit");
+			memNum = scanner.next();
+			if ( Objects.equals(memNum, "Q") ) activeQuestions = false;
+		} while (activeQuestions);
+		
+		throw new NullPointerException("Member cannot be null");
+	}
+	
+//	GETS THE SERVICE FOR THE SERVICE CODE WHICH THE PROVIDER ENTERS
+	private Service getService(Scanner scanner) {
+		boolean activeQuestions = true;
+		System.out.println("Enter the service code:");
+		serviceCode = scanner.next();
+		do {
+			for (int i = 0; i < services.size(); i++) {
+				if (Objects.equals(serviceCode, services.get(i).getServiceNumber())) {
+					return services.get(i);
+				}
+			}
+			System.out.println("Enter a service code that exists or 'Q' to quit");
+			serviceCode = scanner.next();
+			if ( Objects.equals(serviceCode, "Q") ) activeQuestions = false;
+		} while (activeQuestions);
+		
+		throw new NullPointerException("Service cannot be null");
+	}
+	
+//	VERIFIES THAT THE MEMBER'S STATUS IS VALID
+	private void verifyValidity(ManageMember member) {
+		if (Objects.equals(member.getMemberStatus(), "valid") )
+			return;
+		else {
+			System.out.println("Member Status: " + member.getMemberStatus() );
+			throw new IllegalArgumentException("Member not vaild");
+		}
+	}
+	
+//	GETS THE DATE IN WHICH THE SERVICE WAS PROVIDED FROM THE PROVIDER
+	private void getDOS(Scanner scanner) {
+		System.out.println("Enter the date the service was provided: ");
+		dos = scanner.next();
+	}
+
+//   VERIFIES THE SERVICE SHOWN IS CORRECT
+	private void doubleCheckService(Scanner scanner) {
+		System.out.println( "The code " + serviceCode + " is for " + service.getServiceName() );
+		System.out.println("Is this correct?");
+		input = scanner.next();
+		boolean isActive = true;
+	
+		while (isActive) {
+			if (Objects.equals(input, "Yes") || Objects.equals(input, "yes")) {
+				isActive = false;
+				break;
+			}
+			else if ( Objects.equals(input, "No") || Objects.equals(input, "no") ) {
+				throw new IllegalArgumentException("Wrong service entered");
+			}
+			else {
+				System.out.println("Enter 'Yes' or 'No'");
+				input = scanner.next();
+			}
+		}
 	}
 
 //	GETS OPTIONAL COMMENTS TO ADD TO THE BILLREPORT
@@ -63,22 +131,11 @@ public class BillChocAn {
 		System.out.println("Would you like to add comments? (100 character max)");
 		String input = scanner.next();
 		if( Objects.equals(input, "yes") || Objects.equals(input, "Yes") ) {
+			System.out.println("Enter comments:");
 			scanner.nextLine();
 			comments = scanner.nextLine();
 		}
 		else comments = "N/A";
-	}
-
-//	GETS THE SERVICE FOR THE SERVICE CODE WHICH THE PROVIDER ENTERS
-	private Service getService(Scanner scanner) {
-		System.out.println("Enter the service code");
-		serviceCode = scanner.next();
-		for (int i = 0; i < services.size(); i++) {
-			if ( Objects.equals(serviceCode, services.get(i).getServiceNumber()) ) {
-				return services.get(i);
-			}
-		}
-		return null;
 	}
 
 //	PRINTS THE PROVIDER DIRECTORY TO THE CONSOLE IF THE PROVIDER CHOOSES
@@ -90,67 +147,29 @@ public class BillChocAn {
 			direc.printToConsole();
 		}
 	}
-
-//	GETS THE DATE IN WHICH THE SERVICE WAS PROVIDED FROM THE PROVIDER
-	private void getDOS(Scanner scanner) {
-		System.out.println("Enter the date the service was provided: ");
-		dos = scanner.next();
-	}
-
-//	VERIFIES THAT THE USER'S STATUS IS VALID
-	private void verifyValidity(ManageMember member) {
-		if (Objects.equals(member.getMemberStatus(), "VALIDATED") )
-			return;
-		else {
-			System.out.println(member.getMemberStatus() );
-			throw new IllegalArgumentException("Member is not vaild");
-		}
-	}
-
-//	VERIFIES THAT AN OBJECT IS NOT NULL
-	private void verifyExistance(Object item) {
-		if (item == null) {
-			throw new IllegalArgumentException("Somthing isn't right");
-		}
-	}
-
-//	GETS THE PROVIDER BASED ON THE PROVIDER NUMBER WHICH THE PROVIDER INPUTS
-	public ManageProvider getProvider(Scanner scanner) {
-		System.out.println("Enter your provider number: \n");
-		provNum = scanner.next();
-		for (int i = 0; i < providers.size(); i++) {
-			if ( Objects.equals(provNum, providers.get(i).findNumber()) ) {
-				return providers.get(i);
-			}
-		}
-		return null;
-	}
-	
-//	GETS THE MEMBER BASED ON THE MEMBER NUMBER WHICH THE PROVIDER INPUTS
-	public ManageMember getMember(Scanner scanner) {
-		System.out.println("Enter the member's number: \n");
-		memNum = scanner.next();
-		for (int i = 0; i < members.size(); i++) {
-			if ( Objects.equals(memNum, members.get(i).findNumber()) ) {
-				return members.get(i);
-			}
-		}
-		return null;
-	}
 	
 //	WRITES THE DATA TO A FILE
-	private void writeToFile() throws IOException {
-		BufferedWriter writer = new BufferedWriter( new FileWriter("Bill_Report.txt") );
-		setDateTime date = new setDateTime();
+	private void writeToFile() {
+		SetDateTime date = new SetDateTime();
 		date.setCurrentTimeDate();
 		String currDate = ( date.getMonth() + "-" + date.getDayOfMonth() + "-" + date.getYear() );
-		writer.write("\t" + currDate);
-		writer.write("\n\tDate Service was Provided: " + dos);
-		writer.write("\n\tProvider Number: " + provNum );
-		writer.write("\n\tMember Number: " + memNum);
-		writer.write("\n\tService Code: " + serviceCode);
-		writer.write("\n\tComments: " + comments);
-		writer.close();
+		BufferedWriter writer;
+		try {
+			File file = new File(dos + "_Bill_Report.txt");
+			file.createNewFile();
+			writer = new BufferedWriter( new FileWriter(dos + "_Bill_Report.txt") );
+			writer.write("Bill:");
+			writer.write("\tCurrent Date: " + currDate);
+			writer.write("\n\tDate Service was Provided: " + dos);
+			writer.write("\n\tProvider Number: " + provNum );
+			writer.write("\n\tMember Number: " + memNum);
+			writer.write("\n\tService Code: " + serviceCode);
+			writer.write("\n\tComments: " + comments);
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
+
 }
