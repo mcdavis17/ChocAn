@@ -26,7 +26,8 @@ public class ManageMember extends User {
 
 	// Call to parent constructor to run each user detail as parameters
 	// N,A,C,S,Z,I represent the Name, Address, City, State and zipcode
-	public ManageMember(String n, String a, String c, String s, String z, String i ) {
+	public ManageMember(String n, String a, String c, 
+			String s, String z, String i ) {
        super(n, a, c, s, z, i);
        status = "valid";
        servicesReceived = new ArrayList<ServiceProvided>();	// Allocate space for ServiceProvided ArrayList
@@ -78,3 +79,5 @@ public class ManageMember extends User {
 
 
 }
+
+
