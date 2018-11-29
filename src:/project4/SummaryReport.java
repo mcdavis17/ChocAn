@@ -103,3 +103,4 @@ public class SummaryReport {
 		System.out.println("\tNumber of single meetings is " + singleMeetingCount);		
 	}	
 }
+
