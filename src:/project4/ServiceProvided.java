@@ -1,10 +1,9 @@
 package project4;
 
 //author: Calvin Clark
-
 public class ServiceProvided {
-   private setDateTime currentDateTime;
-   private setDateTime serviceDate;
+   private SetDateTime currentDateTime;
+   private SetDateTime serviceDate;
    private ManageProvider provider;
    private ProviderRecords providerNum;
    private ManageMember member;
@@ -17,14 +16,12 @@ public class ServiceProvided {
    	provider = new ManageProvider();
    	providerNum = new ProviderRecords();
    	member = new ManageMember();
-   	currentDateTime = new setDateTime();
-   	serviceDate = new setDateTime();
+   	currentDateTime = new SetDateTime();
+   	serviceDate = new SetDateTime();
    	service = new Service();
    }
    
-   // Constructor that initializes the corresponding
-   // fields in a ServiceProvided object.
-   public ServiceProvided(setDateTime today, setDateTime serviceTime, ManageProvider p, ProviderRecords pn, ManageMember m, Service s, String c) {
+   public ServiceProvided(SetDateTime today, SetDateTime serviceTime, ManageProvider p, ProviderRecords pn, ManageMember m, Service s, String c) {
    	currentDateTime = today;
    	serviceDate = serviceTime;
    	provider = p;
@@ -35,12 +32,12 @@ public class ServiceProvided {
    }
    
    // Method that returns the currentDateTime.
-   public setDateTime getCurrentDate() {
+   public SetDateTime getCurrentDate() {
    	return currentDateTime;
    }
    
    // Method that returns the serviceDate.
-   public setDateTime getServiceDate() {
+   public SetDateTime getServiceDate() {
        return serviceDate;
    }
    
@@ -75,7 +72,7 @@ public class ServiceProvided {
    }
    
    // Method that sets the serviceDate.
-   public void setServiceDate(setDateTime newServDate) {
+   public void setServiceDate(SetDateTime newServDate) {
        serviceDate = newServDate;
    }
    
