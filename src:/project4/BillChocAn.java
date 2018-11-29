@@ -1,12 +1,12 @@
 package project4;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
+
 
 // Author: Caleb Davis
 
@@ -90,9 +90,9 @@ public class BillChocAn {
 	
 //	VERIFIES THAT THE MEMBER'S STATUS IS VALID
 	private void verifyValidity(ManageMember member) {
-		if (member.getMemberStatus().equalsIgnoreCase("valid") || member.getMemberStatus().equalsIgnoreCase("validated")) {
+        if (member.getMemberStatus().equalsIgnoreCase("valid") || member.getMemberStatus().equalsIgnoreCase("validated")) {
 			return;
-			}
+        }
 		else {
 			System.out.println("Member Status: " + member.getMemberStatus() );
 			throw new IllegalArgumentException("Member not vaild");
@@ -153,13 +153,11 @@ public class BillChocAn {
 	private void writeToFile() {
 		SetDateTime date = new SetDateTime();
 		date.setCurrentTimeDate();
+		date.toString();
+		String fileName = dos +"_Bill_Report.txt";
 		String currDate = ( date.getMonth() + "-" + date.getDayOfMonth() + "-" + date.getYear() );
-		BufferedWriter writer;
-		try {
-			File file = new File(dos + "_Bill_Report.txt");
-			file.createNewFile();
-			writer = new BufferedWriter( new FileWriter(dos + "_Bill_Report.txt") );
-			writer.write("Bill:");
+		try ( BufferedWriter writer = new BufferedWriter(new FileWriter(fileName)) ){
+			writer.write("Bill:\n");
 			writer.write("\tCurrent Date: " + currDate);
 			writer.write("\n\tDate Service was Provided: " + dos);
 			writer.write("\n\tProvider Number: " + provNum );
@@ -168,6 +166,14 @@ public class BillChocAn {
 			writer.write("\n\tComments: " + comments);
 			writer.close();
 		} catch (IOException e) {
+			System.out.println("Buffered/FileWriter was not created\n");
+			System.out.println("Bill:");
+			System.out.println("\tCurrent Date: " + currDate);
+			System.out.println("\tDate Service was Provided: " + dos);
+			System.out.println("\tProvider Number: " + provNum );
+			System.out.println("\tMember Number: " + memNum);
+			System.out.println("\tService Code: " + serviceCode);
+			System.out.println("\tComments: " + comments);
 			e.printStackTrace();
 		}
 	}
