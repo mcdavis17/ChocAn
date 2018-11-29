@@ -1,4 +1,5 @@
 package project4;
+
 import java.util.ArrayList;
 
 import project4.Service;
@@ -19,7 +20,8 @@ public class ManageProvider extends User {
 
 	// Call to parent constructor to run each user detail as parameters
 	// N,A,C,S,Z,I represent the Name, Address, City, State and zipcode 
-	public ManageProvider(String n, String a, String c, String s, String z, String i) {
+	public ManageProvider(String n, String a, String c, 
+			String s, String z, String i) {
 		super(n, a, c, s, z, i);
 	}
 
@@ -27,7 +29,7 @@ public class ManageProvider extends User {
 	public int accessManageProviderCatalogue(String serviceName, ArrayList<Service> ManageProviderCatalogue) {
 		int size = ManageProviderCatalogue.size();
 
-		for (int i = 0; i < size; ++i) { // Loop through size of Directory
+		for (int i = 0; i < size; ++i) { 
 			Service s = ManageProviderCatalogue.get(i);
 
 			// Check to match name of service
@@ -39,7 +41,6 @@ public class ManageProvider extends User {
 		return -1;
 	}
 	
-	// Display function of the Directory
 	public void displayManageProviderCatalogue(ArrayList<Service> ManageProviderCatalogue) {
 		int size = ManageProviderCatalogue.size();
 		
@@ -95,4 +96,3 @@ public class ManageProvider extends User {
 		}
     }
 }
-
