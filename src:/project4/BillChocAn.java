@@ -90,8 +90,9 @@ public class BillChocAn {
 	
 //	VERIFIES THAT THE MEMBER'S STATUS IS VALID
 	private void verifyValidity(ManageMember member) {
-		if (Objects.equals(member.getMemberStatus(), "valid") )
+		if (member.getMemberStatus().equalsIgnoreCase("valid") || member.getMemberStatus().equalsIgnoreCase("validated")) {
 			return;
+			}
 		else {
 			System.out.println("Member Status: " + member.getMemberStatus() );
 			throw new IllegalArgumentException("Member not vaild");
