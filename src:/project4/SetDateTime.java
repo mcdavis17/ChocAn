@@ -4,6 +4,8 @@ package project4;
 import java.util.*;
 import java.time.*;
 
+//author: Eland Anthony 
+
 public class SetDateTime  {
 
 	int second;
@@ -32,8 +34,8 @@ public class SetDateTime  {
 		LDT = LocalDateTime.now();
 		setDayOfYear(LDT.getDayOfYear());
 		setDayOfMonth(LDT.getDayOfMonth());
-		setDayOfWeek(LDT.getDayOfWeek());
-		setMonth(LDT.getMonth());
+		setDayOfWeek(LDT.getDayOfWeek().getValue());
+		setMonth(LDT.getMonth().getValue());
 		setYear(LDT.getYear());
 		setMinute(LDT.getMinute());
 		setSecond(LDT.getSecond());

@@ -3,6 +3,12 @@ package project4;
 
 import java.util.*;
 
+/*
+*
+*Author: Eland Anthony
+
+*/
+
 public class Service {
 	double serviceFee;
 	String serviceName;

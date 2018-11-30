@@ -3,11 +3,7 @@ package project4;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/*
-*
-*Author: Eland Anthony
-
-*/
+ // author: Eland Anthony
 public class MemberRecords {
 	private ArrayList<ManageMember> manageMemberDetails;
 	
@@ -71,6 +67,10 @@ public class MemberRecords {
 		}
 		
 		return -1;
+	}
+	
+	public ArrayList<ManageMember> getMemberList() {
+		return manageMemberDetails;
 	}
 	
 	// Function to ask for member ID #

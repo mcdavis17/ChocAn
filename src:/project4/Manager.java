@@ -52,7 +52,7 @@ public class Manager {
 			System.out.println("||---Choose a Report to Print---||");
 			System.out.println("-Member Report : MR");
 			System.out.println("-Provider Report : PR");
-			System.out.println("-Provider Report : EFT");
+			System.out.println("-EFT File : EFT");
 			System.out.println("-Summary Report : SR");
 			System.out.println("Exit : E");
 			action = scanner.nextLine();

@@ -4,7 +4,7 @@ package project4;
 
 import java.util.*;
 
-//author: Richard Anthony
+//author: Eland Anthony
 
 public class Operator {
 	private MemberRecords memberRecords;
@@ -23,17 +23,17 @@ public class Operator {
 	// Function that allows the Operator Promt to create a new member if needed
 	public void insertMemberPrompt(Scanner scanner) {
 		ManageMember member  = new ManageMember();
-		System.out.println("Enter Member name :");
+		System.out.println("Please type Member name :");
 		member.setName(scanner.nextLine());
-		System.out.println("Enter Member address :");
+		System.out.println("Please type Member address :");
 		member.setAddress(scanner.nextLine());
-		System.out.println("Enter Member city :");
+		System.out.println("Please type Member city :");
 		member.setCity(scanner.nextLine());
-		System.out.println("Enter Member state :");
+		System.out.println("Please type Member state :");
 		member.setState(scanner.nextLine());
-		System.out.println("Enter Member zipcode :");
+		System.out.println("Please type Member zipcode :");
 		member.setZipcode(scanner.nextLine());
-		System.out.println("Enter Member number :");
+		System.out.println("Please type Member number :");
 		member.setNumber(scanner.nextLine());
 		memberRecords.addMember(member);
 	}
@@ -66,13 +66,13 @@ public class Operator {
 	}
 	
 	//PROMPT OPERATOR TO UPDATE ONLY CERTAIN ASPECTS OF MEMBER
-	public void updateMemberPrompt(Scanner scanner) {
+	public void editMemberPrompt(Scanner scanner) {
 		String data;
 		//MEMBER EXISTS
 		ManageMember member = memberRecords.getValidMember(scanner);
 		boolean go = true;
 		while(go) {
-			System.out.println("Select data to update:");
+			System.out.println("Select which record to update:");
 			System.out.println("Name: N");
 			System.out.println("Address: A");
 			System.out.println("City: C");
@@ -146,17 +146,17 @@ public class Operator {
 
 	public void insertProviderPrompt(Scanner scanner) {
 		ManageProvider provider  = new ManageProvider();
-		System.out.println("Enter provider name :");
+		System.out.println("Please type provider name :");
 		provider.setName(scanner.nextLine());
-		System.out.println("Enter provider address :");
+		System.out.println("Please type provider address :");
 		provider.setAddress(scanner.nextLine());
-		System.out.println("Enter provider city :");
+		System.out.println("Please type provider city :");
 		provider.setCity(scanner.nextLine());
-		System.out.println("Enter provider state :");
+		System.out.println("Please type provider state :");
 		provider.setState(scanner.nextLine());
-		System.out.println("Enter provider zipcode :");
+		System.out.println("Please type provider zipcode :");
 		provider.setZipcode(scanner.nextLine());
-		System.out.println("Enter provider number :");
+		System.out.println("Please type provider number :");
 		provider.setNumber(scanner.nextLine());
 		providerRecords.addProvider(provider);
 	}
@@ -172,7 +172,7 @@ public class Operator {
 		
 		//KEEP LOOPING UNTIL VALID PROVIDER IS FOUND TO DELETE
 		while(provider == null) {
-			System.out.println("Enter provider to remove.");
+			System.out.println("Please type a Provider to remove.");
 			providerID = scanner.nextLine();
 			if(providerID == "E") {
 				break;
@@ -185,7 +185,7 @@ public class Operator {
 		providerRecords.deleteProvider(provider);
 	}
 	
-	public void updateProviderPrompt(Scanner scanner) {
+	public void editProviderPrompt(Scanner scanner) {
 		String data;
 		ManageProvider provider = providerRecords.getValidProvider(scanner);
 		boolean go = true;
@@ -285,10 +285,10 @@ public class Operator {
 			System.out.println("||---Select Edit Option---||");
 			System.out.println("Add a New Member : AM");
 			System.out.println("Delete a Member : DM");
-			System.out.println("Update a Member : UM");
+			System.out.println("Edit a Member : EM");
 			System.out.println("Add a New Provider Add : AP");
 			System.out.println("Delete a Provider : DP");
-			System.out.println("Update a Provider : UP");
+			System.out.println("Edit a Provider : UP");
 			System.out.println("Exit : E");
 			action = scanner.nextLine();
 			
@@ -300,8 +300,8 @@ public class Operator {
 				case "DM":
 					deleteMemberPrompt(scanner);
 					break;
-				case "UM":
-					updateMemberPrompt(scanner);
+				case "EM":
+					editMemberPrompt(scanner);
 					break;
 				case "AP":
 					insertProviderPrompt(scanner);
@@ -310,7 +310,7 @@ public class Operator {
 					deleteProviderPrompt(scanner);
 					break;
 				case "UP":
-					updateProviderPrompt(scanner);
+					editProviderPrompt(scanner);
 					break;
 				case "E":
 					edit = false;

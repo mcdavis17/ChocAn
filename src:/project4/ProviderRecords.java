@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-/*
-*
-*Author: Eland Anthony
-
-*/
+ //author: Eland Anthony
 public class ProviderRecords {
 	
 	private ArrayList<ManageProvider> manageProviderDetails;
@@ -111,6 +107,10 @@ public class ProviderRecords {
 			
         	System.out.println(p.findName() + "\t" + p.findAddress()  + "\t" + p.findState()  + "\t" + p.findCity()  + "\t" + p.findZipcode()  + "\t" + p.findNumber());
 		}
+	}
+	
+	public ArrayList<ManageProvider> getProviderList() {
+		return manageProviderDetails;
 	}
 	
 	// Function to compare provider numbers
