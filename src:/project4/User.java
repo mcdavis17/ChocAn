@@ -1,6 +1,11 @@
 package project4;
 
- //author: Calvin Clark
+ 
+
+/**
+ * @author Calvin Clark
+ *
+ */
 
 abstract class User {
 	private String name;
@@ -10,17 +15,32 @@ abstract class User {
 	private String zipcode;
 	private String number;
 	
-	// Default constructor for a general  USER
+	/**
+	 * Default constructor for a general  USER
+	 */
 	public User() {
 	}
 
-	// Constructor that is passed only member name.
+	/**
+	 * Constructor that is passed only member name.
+	 * 
+	 * @param n user name
+	 */
 	public User(String n) {
 		number = n;
 	}
 	
-	// Call to parent constructor to run each user detail as parameters
-	// N,A,C,S,Z,I represent the Name, Address, City, State and zipcode
+	/**
+	 * 
+	 * Call to parent constructor to run each user detail as parameters
+	 * 
+	 * @param n Name
+	 * @param a Address
+	 * @param c City
+	 * @param s State
+	 * @param z Zip
+	 * @param i Number
+	 */
 	public User(String n, String a, String c, String s, String z, String i) {
 		name = n;
 		address = a;
@@ -36,57 +56,103 @@ abstract class User {
 		number = i;
 	}
 
-	// Sets user name.
+	/**
+	 * 
+	 * Sets user name.
+	 * 
+	 * @param n name
+	 */
 	public void setName(String n) {
 		name = n;
 	}
 
-	// Returns user name.
+	/**
+	 * Returns user name.
+	 * 
+	 * @return user name
+	 */
 	public String findName() {
 		return name;
 	}
 
-	// Sets user address.
+	/**
+	 * Sets user address.
+	 * 
+	 * @param a address
+	 */
 	public void setAddress(String a) {
 		address = a;
 	}
 
-	// Returns user address.
+	/**
+	 * Returns user address.
+	 * 
+	 * @return address
+	 */
 	public String findAddress() {
 		return address;
 	}
 
-	// Sets user city.
+	/**
+	 * Sets user city.
+	 * 
+	 * @param c city
+	 */
 	public void setCity(String c) {
 		city = c;
 	}
 
-	// Returns user city.
+	/**
+	 * Returns user city.
+	 * 
+	 * @return c
+	 */
 	public String findCity() {
 		return city;
 	}
 
-	// Sets user state.
+	/**
+	 * Sets user state.
+	 * 
+	 * @param s state 
+	 */
 	public void setState(String s) {
 		state = s;
 	}
 
-	// Returns user state.
+	/**
+	 * Returns user state.
+	 * 
+	 * @return state
+	 */
 	public String findState() {
 		return state;
 	}
 
-	// Sets user zipcode.
+	/**
+	 * 
+	 * Sets user zipcode
+	 * 
+	 * @param z Zipcode
+	 */
 	public void setZipcode(String z) {
 		zipcode = z;
 	}
 
-	// Returns user zipcode.
+	/**
+	 * Returns user zipcode.
+	 * 
+	 * @return zipcode
+	 */
 	public String findZipcode() {
 		return zipcode;
 	}
 
-	// Sets user number.
+	/**
+	 * Sets user number.
+	 * 
+	 * @param n number
+	 */
 	public void setNumber(String n) {
 		
 		// Check to determine if user number is 9 digits
@@ -97,7 +163,11 @@ abstract class User {
 		number = n;
 	}
 
-	// Returns user number.
+	/**
+	 * Returns user number.
+	 * 
+	 * @return user number
+	 */
 	public String findNumber() {
 		return number;
 	}
