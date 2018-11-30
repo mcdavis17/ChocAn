@@ -2,9 +2,21 @@ package project4;
 
 import java.util.ArrayList;
 
+/**
+ * @author Caleb Davis
+ *
+ */
 public class GenerateMemberReport {
 
-	public static void printGenerateMemberReport(ManageMember member, ArrayList<ServiceProvided> services) {
+	/**
+	 * 
+	 * prints the member report
+	 * 
+	 * @param member member
+	 * @param services service
+	 */
+	public static void printGenerateMemberReport(ManageMember member, 
+			ArrayList<ServiceProvided> services) {
 		
 		//Print all member details
 		System.out.println("||------Displaying Member Info:------||");

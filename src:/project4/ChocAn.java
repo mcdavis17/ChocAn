@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
+
+/**
+ * @author Caleb Davis
+ *
+ */
+
 public class ChocAn{
 	private MemberRecords memberRecords;
 	private ProviderRecords providerRecords;
@@ -23,6 +29,12 @@ public class ChocAn{
 	}
 	
 
+	/**
+	 * 
+	 * Login and menu for the provider
+	 * 
+	 * @param scanner comman line scanner
+	 */
 	public void ChocAnTerminal(Scanner scanner) {
 		// Provider log-in
 		ManageProvider activeProvider;
@@ -62,8 +74,16 @@ public class ChocAn{
 		}
 	}
 	
+	
+	/**
+	 * 
+	 * Prints the menu and allows the provider to choose a serive
+	 * 
+	 * @param questions menu options
+	 * @return returns the user input
+	 */
 	public String questionPrompt(Scanner questions) {
-		System.out.println("Which service do you require?");
+		System.out.println("Please Select a Service from the List Below...");
 		System.out.println("Provide service: P");
 		System.out.println("Bill ChocAn: B");
 		System.out.println("Display Provider Directory: D");
@@ -75,9 +95,14 @@ public class ChocAn{
 		return answer;
 	}
 	
+	/**
+	 * @param reader user input
+	 * @param type object type 
+	 * @return Id for object
+	 */
 	public String promptNumber(Scanner reader, String type) { //Make sure to enter a 9-digit number
 		String userID;
-		System.out.println("Enter " + type + " number: ");
+		System.out.println("Please Enter 9-digit " + type + " number: ");
 		
 		userID  = reader.nextLine(); 
 		
@@ -90,12 +115,20 @@ public class ChocAn{
 	}
 
 	
+	/**
+	 * 
+	 * Sets the current date and time
+	 * 
+	 * @param reader command line scanner
+	 * @return current date and time
+	 */
 	public SetDateTime promptDate(Scanner reader) { 
 		int month;
 		int day;
 		int year;
 		SetDateTime dt = new SetDateTime();
 		
+		System.out.println("Please Enter the Month, Day & Time in the correct format");
 		System.out.println("Enter month (MM):");
 		month = reader.nextInt();
 		dt.setMonth(month);
@@ -113,6 +146,13 @@ public class ChocAn{
 		return dt;
 	}
 	
+	/**
+	 * 
+	 * provider login
+	 * 
+	 * @param reader command line scanner
+	 * @return provider 
+	 */
 	public  ManageProvider providerLogin(Scanner reader) {
 		String providerNum;
 		int providerIndex = -1;
@@ -130,6 +170,14 @@ public class ChocAn{
 	}
 	
 	
+	
+	/**
+	 * 
+	 * member login
+	 * 
+	 * @param reader command line input
+	 * @return member
+	 */
 	public ManageMember memberLogin(Scanner reader) {
 		String memberNum;
 		int memberIndex = -1;
@@ -147,13 +195,18 @@ public class ChocAn{
 	}
 	
 
+	/**
+	 * @param scanner command line scanner
+	 * @param provider provider currently loggin in
+	 * @return index for certain service code
+	 */
 	public int promptService(Scanner scanner, ManageProvider provider) {
 
 			String serviceCode;
 			int serviceIndex = -1;
-			String yesNo = "N";
+			String response = "N";
 			
-			while(!yesNo.equals("Y")) { //Only accept Y
+			while(!response.equals("Y")) { //Only accept Y
 				System.out.println("Type in service code.(E for exit):");
 				serviceCode = scanner.nextLine();
 				
@@ -171,7 +224,7 @@ public class ChocAn{
 						//Print service name
 						System.out.println(providerDirectory.get(serviceIndex).getServiceName());
 						System.out.println("Yes/No (Y/N)?: ");
-						yesNo = scanner.nextLine();
+						response = scanner.nextLine();
 					}
 				}
 			}
@@ -179,6 +232,15 @@ public class ChocAn{
 			return serviceIndex;
 	}
 	
+	/**
+	 * 
+	 * Validates a service exists
+	 * 
+	 * @param scanner command line reader
+	 * @param provider Provider currently logged in
+	 * @param providerDirectory list of services
+	 * @return index of service
+	 */
 	public int validateService(Scanner scanner,
 									  ManageProvider provider, 
 									  ArrayList<Service> providerDirectory) {
@@ -187,7 +249,8 @@ public class ChocAn{
 		int serviceIndex = -1;
 		
 		while(serviceIndex == -1) {
-			System.out.println("Enter Healthcare Service (E for exit):");
+			System.out.println("Enter the Healthcare Service from the Provided List (E for exit)");
+			System.out.println("Physical Therapy, Psychiatrist, Nutritional Support, Transportation: ");
 			requestedService = scanner.nextLine();
 			
 			if (requestedService.equals("E")) {
@@ -197,7 +260,7 @@ public class ChocAn{
 			else {
 				serviceIndex = provider.accessManageProviderCatalogue(requestedService, providerDirectory);
 				if(serviceIndex == -1) {
-					System.out.println("Error Service not found. Try again.(E for exit)");
+					System.out.println("Error Service not found. Please select from list.(E for exit)");
 				}
 			}
 		}
@@ -205,11 +268,18 @@ public class ChocAn{
 		return serviceIndex;
 	}
 
+	/**
+	 * 
+	 * verifies a member is valid
+	 * 
+	 * @param scanner user input
+	 * @param activeProvider provider logged in
+	 */
 	public void requestServiceCase(Scanner scanner, ManageProvider activeProvider) {
 		int serviceNum;
 		ManageMember activeMember = memberLogin(scanner);
 		
-		if(activeMember.getMemberStatus().equals("valid")) {
+		if(activeMember.getMemberStatus().equals("Valid")) {
 			System.out.println("Validated");
 			serviceNum = validateService(scanner, activeProvider, providerDirectory);
 			
@@ -228,7 +298,7 @@ public class ChocAn{
 		}
 		
 		else {
-			System.out.println("Member suspended");
+			System.out.println("Member suspended...");
 		}
 	}
 	

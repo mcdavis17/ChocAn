@@ -3,9 +3,21 @@ package project4;
 import java.util.ArrayList;
 
 
+/**
+ * @author Caleb Davis
+ *
+ */
 public class GenerateProviderReport {
 	
-	public static void printManageGenerateProviderReport(ManageProvider ManageProvider, ArrayList<ServiceProvided> services) {
+	/**
+	 * 
+	 * prints the provider report
+	 * 
+	 * @param ManageProvider provider
+	 * @param services service list
+	 */
+	public static void printManageGenerateProviderReport(ManageProvider ManageProvider, 
+			ArrayList<ServiceProvided> services) {
 		//Print all ManageProvider details
 		System.out.println("||------Printing Provider Details:------||");
 		ManageProvider.printManageProviderDetails();
@@ -16,7 +28,7 @@ public class GenerateProviderReport {
 		//Calculates the amount due to a Provider
 		String ManageProviderNum = ManageProvider.findNumber();
 		for(int i = 0;  i < services.size(); i++) {
-			if ((ManageProviderNum.equals(services.get(i).getProvider().findNumber()))) {
+			if ((ManageProviderNum.equals(services.get(i).getManageProvider().findNumber()))) {
 				services.get(i).printServiceProvidedProvider();
 				weeklyFee += services.get(i).getServiceFee();
 				totalMeet++;

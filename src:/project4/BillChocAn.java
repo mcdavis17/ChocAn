@@ -8,8 +8,13 @@ import java.util.Objects;
 import java.util.Scanner;
 
 
+
 // Author: Caleb Davis
 
+/**
+ * @author Caleb Davis
+ *
+ */
 public class BillChocAn {
 	
 	ManageMember member;
@@ -26,14 +31,25 @@ public class BillChocAn {
 	private ArrayList<ManageMember> members = new ArrayList<ManageMember> ();
 	private ArrayList<Service> services = new ArrayList<Service> ();
 
-	//  Constructor which sets each of the ArrayLists
+	/**
+	 * 
+	 * Constructor which sets each of the ArrayLists
+	 * 
+	 * @param pNum provider number
+	 * @param memberList member list
+	 * @param serviceList service list
+	 */
 	public BillChocAn(String pNum, ArrayList<ManageMember> memberList, ArrayList<Service> serviceList) {
 		provNum = pNum;
 		members = memberList;
 		services = serviceList;
 	}
 	
-	//  Creates a file with the containing the bill report for a service given
+	/**
+	 * Creates a file with the containing the bill report for a service given
+	 * 
+	 * @param scanner command line input
+	 */
 	public void billChocAnOption(Scanner scanner) {
 		
 		member = getMember(scanner);
@@ -50,7 +66,12 @@ public class BillChocAn {
 		
 	}
 	
-//	GETS THE MEMBER BASED ON THE MEMBER NUMBER WHICH THE PROVIDER INPUTS
+	/**
+	 * GETS THE MEMBER BASED ON THE MEMBER NUMBER WHICH THE PROVIDER INPUTS
+	 * 
+	 * @param scanner command line input
+	 * @return member
+	 */
 	public ManageMember getMember(Scanner scanner) {
 		boolean activeQuestions = true;
 		System.out.println("Enter the member's number:");
@@ -69,7 +90,13 @@ public class BillChocAn {
 		throw new NullPointerException("Member cannot be null");
 	}
 	
-//	GETS THE SERVICE FOR THE SERVICE CODE WHICH THE PROVIDER ENTERS
+//	
+	/**
+	 * GETS THE SERVICE FOR THE SERVICE CODE WHICH THE PROVIDER ENTERS
+	 * 
+	 * @param scanner command line input
+	 * @return service
+	 */
 	private Service getService(Scanner scanner) {
 		boolean activeQuestions = true;
 		System.out.println("Enter the service code:");
@@ -88,24 +115,35 @@ public class BillChocAn {
 		throw new NullPointerException("Service cannot be null");
 	}
 	
-//	VERIFIES THAT THE MEMBER'S STATUS IS VALID
+	/**
+	 * VERIFIES THAT THE MEMBER'S STATUS IS VALID
+	 * 
+	 * @param member member
+	 */
 	private void verifyValidity(ManageMember member) {
-        if (member.getMemberStatus().equalsIgnoreCase("valid") || member.getMemberStatus().equalsIgnoreCase("validated")) {
+		if (Objects.equals(member.getMemberStatus(), "valid") )
 			return;
-        }
 		else {
 			System.out.println("Member Status: " + member.getMemberStatus() );
 			throw new IllegalArgumentException("Member not vaild");
 		}
 	}
 	
-//	GETS THE DATE IN WHICH THE SERVICE WAS PROVIDED FROM THE PROVIDER
+	/**
+	 * GETS THE DATE IN WHICH THE SERVICE WAS PROVIDED FROM THE PROVIDER
+	 * 
+	 * @param scanner command line input
+	 */
 	private void getDOS(Scanner scanner) {
 		System.out.println("Enter the date the service was provided: ");
 		dos = scanner.next();
 	}
 
-//   VERIFIES THE SERVICE SHOWN IS CORRECT
+	/**
+	 * VERIFIES THE SERVICE SHOWN IS CORRECT
+	 * 
+	 * @param scanner command line input
+	 */
 	private void doubleCheckService(Scanner scanner) {
 		System.out.println( "The code " + serviceCode + " is for " + service.getServiceName() );
 		System.out.println("Is this correct?");
@@ -127,7 +165,11 @@ public class BillChocAn {
 		}
 	}
 
-//	GETS OPTIONAL COMMENTS TO ADD TO THE BILLREPORT
+	/**
+	 * GETS OPTIONAL COMMENTS TO ADD TO THE BILLREPORT
+	 * 
+	 * @param scanner command line input
+	 */
 	private void getComments(Scanner scanner) {
 		System.out.println("Would you like to add comments? (100 character max)");
 		String input = scanner.next();
@@ -139,7 +181,11 @@ public class BillChocAn {
 		else comments = "N/A";
 	}
 
-//	PRINTS THE PROVIDER DIRECTORY TO THE CONSOLE IF THE PROVIDER CHOOSES
+	/**
+	 * PRINTS THE PROVIDER DIRECTORY TO THE CONSOLE IF THE PROVIDER CHOOSES
+	 * 
+	 * @param scanner command line input
+	 */
 	private void printDirectory(Scanner scanner) {
 		System.out.println("Would you like to see the provider directory?");
 		String input = scanner.next();
@@ -149,7 +195,9 @@ public class BillChocAn {
 		}
 	}
 	
-//	WRITES THE DATA TO A FILE
+	/**
+	 * WRITES THE DATA TO A FILE
+	 */
 	private void writeToFile() {
 		SetDateTime date = new SetDateTime();
 		date.setCurrentTimeDate();
