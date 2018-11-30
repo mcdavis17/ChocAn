@@ -2,8 +2,10 @@ package project4;
 
 import java.util.*;
 
-//author: Calvin Clark
-
+/**
+ * @author Calvin Clark
+ *
+ */
 public class SummaryReport {
 	
 	private ArrayList<ServiceProvided> serviceArray;
@@ -14,6 +16,9 @@ public class SummaryReport {
 	private double totalCharge;
 	
 	
+	/**
+	 *  Comparoator
+	 */
 	public static Comparator<ServiceProvided> proNum = new Comparator<ServiceProvided>() {
 		public int compare(ServiceProvided t1, ServiceProvided t2) {
 			String num1 = t1.getManageProvider().findNumber().toUpperCase();
@@ -22,11 +27,18 @@ public class SummaryReport {
 		}
 	};
 	
-	// Constructor that takes transaction record array.
+	/**
+	 * Constructor that takes transaction record array.
+	 * 
+	 * @param array transaction record
+	 */
 	public SummaryReport(ArrayList<ServiceProvided> array) {
 		this.serviceArray = array;
 	}
 	
+	/**
+	 * Creates summary report
+	 */
 	public void initiateSummaryReport() {
 		sortArrayByProviderNumber();
 		System.out.println("\n||------Summary Report------||");
@@ -34,13 +46,17 @@ public class SummaryReport {
 	}
 	
 	
-	// Function to sorts a list of providers by provider number.
+	/**
+	 * Function to sorts a list of providers by provider number
+	 */
 	public void sortArrayByProviderNumber() {
 		Collections.sort(serviceArray, GenerateEFT.serviceNum); 
 	}
 	
 	
-	// Function call of arraySpan, used for all information of providers 
+	/**
+	 * Function call of arraySpan, used for all information of providers 
+	 */
 	public void arraySpan() {
 		singleMeetingCount = 0;
 		overallMeetingCount = 0;
@@ -85,22 +101,29 @@ public class SummaryReport {
 		System.out.printf("%.2f\n", totalCharge);
 	}
 	
-	// Function to print the names of providers and their IDs.
+	/**
+	 * Function to print the names of providers and their IDs.
+	 * 
+	 * @param a provider name
+	 * @param b provider iD
+	 */
 	public void writeProvider(String a, String b) {		
 		System.out.println("" + a + "(" + b + "):");		
 	}
 	
-	
-	// Function to print the fee due for each week.
+	/**
+	 * Function to print the fee due for each week.
+	 */
 	public void writeAmountDue() {		
 		System.out.print("\tFee for week is $");
 		System.out.printf("%.2f\n", singleCharge);		
 	}
 	
 	
-	// Function to print # of consultations to screen
+	/**
+	 * Function to print # of consultations to screen
+	 */
 	public void writeConsultations() {		
 		System.out.println("\tNumber of single meetings is " + singleMeetingCount);		
 	}	
 }
-

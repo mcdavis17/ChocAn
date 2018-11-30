@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.*;
 
 
+/**
+ * @author Calvin Clark
+ *
+ */
 public class Terminal {
 
 	public static void main(String[] args) throws IOException {
@@ -57,6 +61,10 @@ public class Terminal {
 		}
 	}	
 
+	/**
+	 * @param questions Command line input
+	 * @return answer
+	 */
 	public static String masterPromptTerminal(Scanner questions) {
 		System.out.println("Please Select the Operator, Provider or Member Terminal...");
 		System.out.println("Operator: O");
@@ -69,7 +77,15 @@ public class Terminal {
 		return answer;
 	}
 	
-	// Creating basic options to run the program with for each category
+	
+	/**
+	 * 
+	 * Creating basic options to run the program with for each category
+	 * 
+	 * @param providerRecords providers
+	 * @param memberRecords members
+	 * @param providerDirectory services
+	 */
 	public static void initVariables(ProviderRecords providerRecords, 
 									MemberRecords memberRecords, 
 									ArrayList<Service> providerDirectory) {

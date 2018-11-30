@@ -2,30 +2,50 @@ package project4;
 
 import java.util.ArrayList;
 
-import project4.Service;
-import project4.User;
 
-
-//author: Calvin Clark
+/**
+ * @author Calvin Clark
+ *
+ */
 public class ManageProvider extends User {
 	
-	// ManageProvider constructor initialization
+	/**
+	 * ManageProvider constructor initialization
+	 */
 	public ManageProvider() {
 	}
 
-	// Pass a name through the constructor 
+	/**
+	 * Pass a name through the constructor 
+	 * 
+	 * @param n name
+	 */
 	public ManageProvider(String n) {
 		super(n);
 	}
 
-	// Call to parent constructor to run each user detail as parameters
-	// N,A,C,S,Z,I represent the Name, Address, City, State and zipcode 
+	/**
+	 * Call to parent constructor to run each user detail as parameters
+	 * 
+	 * @param n Name
+	 * @param a Address
+	 * @param c City
+	 * @param s State
+	 * @param z Zip Code
+	 * @param i Number
+	 */
 	public ManageProvider(String n, String a, String c, 
 			String s, String z, String i) {
 		super(n, a, c, s, z, i);
 	}
 
-	// Initialization of the  ManageProvider Directory using an ArrayList
+	/**
+	 * Initialization of the  ManageProvider Directory using an ArrayList
+	 * 
+	 * @param serviceName name of service
+	 * @param ManageProviderCatalogue service lsit
+	 * @return index
+	 */
 	public int accessManageProviderCatalogue(String serviceName, ArrayList<Service> ManageProviderCatalogue) {
 		int size = ManageProviderCatalogue.size();
 
@@ -41,6 +61,11 @@ public class ManageProvider extends User {
 		return -1;
 	}
 	
+	/**
+	 * prints list of services
+	 * 
+	 * @param ManageProviderCatalogue service list
+	 */
 	public void displayManageProviderCatalogue(ArrayList<Service> ManageProviderCatalogue) {
 		int size = ManageProviderCatalogue.size();
 		
@@ -51,6 +76,13 @@ public class ManageProvider extends User {
 		}
 	}
 	
+	/**
+	 * Finds service code index
+	 * 
+	 * @param serviceCode service code name
+	 * @param ManageProviderCatalogue service list
+	 * @return service index
+	 */
 	public int lookUpServiceCodeIndex(String serviceCode, ArrayList<Service> ManageProviderCatalogue) {
 		int size = ManageProviderCatalogue.size();
 
@@ -66,7 +98,9 @@ public class ManageProvider extends User {
 		return -1;
 	}
 	
-	// Statement to Print the updated values in the required format
+	/**
+	 * Statement to Print the updated values in the required format
+	 */
 	public void printManageProviderDetails() {
 		if (findName() == null) {
 			throw new NumberFormatException("Provider Profile needs to be completed...Value is missing");
