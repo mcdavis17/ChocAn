@@ -1,26 +1,45 @@
+package project4;
 //class for opeartor functions
 
-package project4;
+//package project4;
 
 import java.util.*;
 
-//author: Eland Anthony
 
+/**
+ * @author Richard Anthony
+ *
+ */
 public class Operator {
 	private MemberRecords memberRecords;
 	private ProviderRecords providerRecords;
 
+	/**
+	 * @param memberRecords members
+	 * @param providerRecords providers
+	 */
 	public Operator(MemberRecords memberRecords, ProviderRecords providerRecords) {
 		this.memberRecords = memberRecords;
 		this.providerRecords = providerRecords;
 	}
 	
-	// Function to insert a member 
+	/**
+	 * 
+	 * Function to insert a member 
+	 * 
+	 * @param member member to insert
+	 */
 	public void insertMember(ManageMember member) {
 		memberRecords.addMember(member);
 	}
 
-	// Function that allows the Operator Promt to create a new member if needed
+	
+	/**
+	 * 
+	 * Function that allows the Operator Promt to create a new member if needed
+	 * 
+	 * @param scanner command line input
+	 */
 	public void insertMemberPrompt(Scanner scanner) {
 		ManageMember member  = new ManageMember();
 		System.out.println("Please type Member name :");
@@ -39,11 +58,22 @@ public class Operator {
 	}
 
 	
+	/**
+	 * 
+	 * Function to delete a member
+	 * 
+	 * @param member member to delete
+	 */
 	public void deleteMember(ManageMember member) {
 		memberRecords.deleteMember(member);
 	}
 	
-	// Function for the Operator Prompt to Delete a Member
+	/**
+	 * 
+	 * Function for the Operator Prompt to Delete a Member
+	 * 
+	 * @param scanner command line input
+	 */
 	public void deleteMemberPrompt(Scanner scanner) {
 		String memberID;
 		ManageMember member = null;
@@ -65,7 +95,12 @@ public class Operator {
 		memberRecords.deleteMember(member);
 	}
 	
-	//PROMPT OPERATOR TO UPDATE ONLY CERTAIN ASPECTS OF MEMBER
+	/**
+	 * 
+	 * PROMPT OPERATOR TO UPDATE ONLY CERTAIN ASPECTS OF MEMBER
+	 * 
+	 * @param scanner command line input
+	 */
 	public void editMemberPrompt(Scanner scanner) {
 		String data;
 		//MEMBER EXISTS
@@ -138,12 +173,24 @@ public class Operator {
 		}	
 	}
 	
-	// Function for the Operator to Insert 
+	
+	/**
+	 * 
+	 * Function for the Operator to Insert a provider
+	 * 
+	 * @param provider provider to add
+	 */
 	public void insertProvider(ManageProvider provider) {
 		providerRecords.addProvider(provider);
 	}
 	
 
+	/**
+	 * 
+	 * Propmpt to enter a new provider
+	 * 
+	 * @param scanner command line input
+	 */
 	public void insertProviderPrompt(Scanner scanner) {
 		ManageProvider provider  = new ManageProvider();
 		System.out.println("Please type provider name :");
@@ -161,11 +208,20 @@ public class Operator {
 		providerRecords.addProvider(provider);
 	}
 	
+	/**
+	 * @param provider provider to delete
+	 */
 	public void deleteProvider(ManageProvider provider) {
 		providerRecords.deleteProvider(provider);
 	}
 	
 	
+	/**
+	 * 
+	 * Prompt to delete a provider
+	 * 
+	 * @param scanner command line input
+	 */
 	public void deleteProviderPrompt(Scanner scanner) {
 		String providerID;
 		ManageProvider provider = null;
@@ -185,6 +241,12 @@ public class Operator {
 		providerRecords.deleteProvider(provider);
 	}
 	
+	/**
+	 * 
+	 * Prompt to edit provider details
+	 * 
+	 * @param scanner command line input
+	 */
 	public void editProviderPrompt(Scanner scanner) {
 		String data;
 		ManageProvider provider = providerRecords.getValidProvider(scanner);
@@ -257,6 +319,13 @@ public class Operator {
 	}
 	
 
+	/**
+	 * 
+	 * Searches for a member based on the given member number
+	 * 
+	 * @param memberNum member number
+	 * @return member 
+	 */
 	public ManageMember memberSearch(String memberNum) {
 			ManageMember member =  memberRecords.findMember(memberNum);
 			if(member != null) {
@@ -271,11 +340,24 @@ public class Operator {
 		}
 	
 
+	/**
+	 * 
+	 * returns a provider based on the given provider number
+	 * 
+	 * @param providerNum provider number
+	 * @return provider
+	 */
 	public ManageProvider providerSearch(String providerNum) {
 		return providerRecords.findProvider(providerNum);
 	}
 	
 
+	/**
+	 * 
+	 * Operator's controls
+	 * 
+	 * @param scanner command line scanner
+	 */
 	public void OperatorTerminal(Scanner scanner) {
 		String action;
 		boolean edit = true;

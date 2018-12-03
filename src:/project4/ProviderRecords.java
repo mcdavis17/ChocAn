@@ -4,21 +4,36 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
- //author: Eland Anthony
+/**
+ * @author Richard Anthony
+ *
+ */
 public class ProviderRecords {
 	
 	private ArrayList<ManageProvider> manageProviderDetails;
 	
+	/**
+	 * 
+	 */
 	public ProviderRecords(){
 		manageProviderDetails = new ArrayList<ManageProvider>();
 	}
 	
-	// Function to update the current Member Details
+	/**
+	 * Function to update the current Member Details
+	 * 
+	 * @param provider provider
+	 */
 	public void addProvider(ManageProvider provider){
 		manageProviderDetails.add(provider);
 	}
-	
-	// Returns member at current index in ArrayList of members.
+
+	/**
+	 * Returns member at current index in ArrayList of members.
+	 * 
+	 * @param providerIndex index of provider
+	 * @return provider index
+	 */
 	public ManageProvider findProvider(int providerIndex){
 		if((providerIndex < 0) || (providerIndex >= manageProviderDetails.size())){
 			return null;	
@@ -27,7 +42,13 @@ public class ProviderRecords {
 		return manageProviderDetails.get(providerIndex);
 	}
 	
-	// function to get Provider based on the #
+	
+	/**
+	 * function to get Provider based on the #
+	 * 
+	 * @param providerNumber provider number
+	 * @return provider
+	 */
 	public ManageProvider findProvider(String providerNumber){
 		int i = getRecordIndex(providerNumber);
 		if(i == -1){
@@ -37,22 +58,41 @@ public class ProviderRecords {
 		return manageProviderDetails.get(i);
 	}
 	
-	// Function to delete the provider from the Array of providers.
+	/**
+	 * Function to delete the provider from the Array of providers.
+	 * 
+	 * @param provider provider
+	 */
 	public void deleteProvider(ManageProvider provider) {
 		manageProviderDetails.remove(provider);
 	}
 	
-	// Function to delete a member from the array list of 'i'
+	
+	/**
+	 * Function to delete a member from the array list of 'i'
+	 * 
+	 * @param i provider index
+	 */
 	public void deleteProvider(int i) {
 		manageProviderDetails.remove(i);
 	}
 	
-	// Returns size of ArrayList of member records.
+	
+	/**
+	 * Returns size of ArrayList of member records.
+	 * 
+	 * @return number of providers
+	 */
 	public int getSize() {
 		return manageProviderDetails.size();
 	}
 	
-	// Function to search the given index of the member form the list
+	/**
+	 * Function to search the given index of the member form the list
+	 * 
+	 * @param number member number
+	 * @return record index
+	 */
 	public int getRecordIndex(String number) {
 		
 		ManageProvider p1 = new ManageProvider(number);
@@ -71,7 +111,13 @@ public class ProviderRecords {
 		return -1;
 	}
 	
-	// Function that asks for provider ID #
+	
+	/**
+	 * Function that asks for provider ID #
+	 * 
+	 * @param scanner command line input
+	 * @return provider
+	 */
 	public ManageProvider getValidProvider(Scanner scanner) {
 		String providerID;
 		ManageProvider provider = null;
@@ -93,7 +139,9 @@ public class ProviderRecords {
 	}
 	
 	
-	// Function to print the details of a given provider. 
+	/**
+	 * Function to print the details of a given provider. 
+	 */
 	public void printDetails() {
 		int size = manageProviderDetails.size();
 		
@@ -109,11 +157,22 @@ public class ProviderRecords {
 		}
 	}
 	
+	/**
+	 * gets the list of providers
+	 * 
+	 * @return provider list
+	 */
 	public ArrayList<ManageProvider> getProviderList() {
 		return manageProviderDetails;
 	}
 	
-	// Function to compare provider numbers
+	/**
+	 * Function to compare provider numbers
+	 * 
+	 * @param p1 provider1
+	 * @param p2 provider2
+	 * @return true/false
+	 */
 	public boolean compare(ManageProvider p1, ManageProvider p2) {
 		return p1.findNumber().equals(p2.findNumber());
 	}

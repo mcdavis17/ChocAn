@@ -1,14 +1,22 @@
-package project4;
+//package project4;
 import java.io.IOException;
 import java.util.*;
 
-
-// author: Eland Anthony
+/**
+ * @author Calvin Clark
+ *
+ */
 public class Manager {
 	private MemberRecords memberRecords;
 	private ProviderRecords providerRecords;
 	
 
+	/**
+	 * Creates manager
+	 * 
+	 * @param memberRecords members 
+	 * @param providerRecords providers
+	 */
 	public Manager(MemberRecords memberRecords, 
 			ProviderRecords providerRecords) {
 		this.memberRecords = memberRecords;
@@ -16,6 +24,11 @@ public class Manager {
 	}
 
 
+	/**
+	 * Prints member records
+	 * 
+	 * @param serviceArray services
+	 */
 	public void printMemberReport(ArrayList<ServiceProvided> serviceArray) {
 		int memberCounter = 0;
 		
@@ -28,6 +41,11 @@ public class Manager {
 	}
 	
 	
+	/**
+	 * prints provider report
+	 * 
+	 * @param transactionArray services provided
+	 */
 	public void printProviderReport(ArrayList<ServiceProvided> transactionArray) {
 		int providerCounter = 0;
 		
@@ -40,7 +58,11 @@ public class Manager {
 	}
 
 	/**
-	 * @throws IOException 
+	 * Manager options
+	 * 
+	 * @param scanner command line input
+	 * @param serviceArray services 
+	 * @throws IOException reports printed to files
 	 */
 	public void managerTerminal(Scanner scanner, ArrayList<ServiceProvided> serviceArray) throws IOException {
 		String action;
