@@ -33,12 +33,11 @@ public class ManageProviderTest {
       }
       @Test public void sanityTest() {
       testing.setCity("New Orleans");
-      testing.setCity(testing.findName());
+      testing.setCity(testing.findCity());
       assertEquals("New Orleans", testing.findCity());
       }
-      @Test public void ExceptionTest() {
-      testing.setName("");
-      testing.setName(testing.findName());
-      assertEquals("Provider Profile needs to be completed...Value is missing", testing.findName());
+      @Test(expected = NumberFormatException.class)
+  	  public void ExceptionTest() {
+      testing.printManageProviderDetails();
       }
 }
