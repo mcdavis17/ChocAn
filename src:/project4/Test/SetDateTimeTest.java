@@ -1,4 +1,4 @@
-package Test;
+package project4.test;
 
 import static org.junit.Assert.*;
 
@@ -6,8 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import project4.SetDateTime;
-// author: Calvin Clark
-// testing author code: Richard Anthony - SetDateTime.java
+
+
+//author: Calvin Clark
+//testing author code: Richard Anthony - SetDateTime.java
 public class SetDateTimeTest {
 	SetDateTime dt;
 	
@@ -36,4 +38,3 @@ public class SetDateTimeTest {
 	}
 
 }
-

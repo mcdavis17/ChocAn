@@ -1,15 +1,21 @@
-import static org.junit.jupiter.api.Assertions.*;
+package project4.test;
 
-import java.util.ArrayList;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import project4.ManageMember;
+import project4.ManageProvider;
+import project4.MemberRecords;
+import project4.Operator;
+import project4.ProviderRecords;
 
 /*
  * Operator Test Class author: Caleb Davis
  */
 
-class OperatorTest {
+public class OperatorTest {
 	
 	Operator testOperator;
 	MemberRecords testMembers;
@@ -17,8 +23,8 @@ class OperatorTest {
 	ManageProvider providerJohn;
 	ManageMember memberJoe;
 
-	@BeforeEach
-	void setUp() {
+	@Before
+	public void setUp() {
 		testMembers = new MemberRecords();
 		testProviders = new ProviderRecords();
 		
@@ -43,20 +49,20 @@ class OperatorTest {
 	}
 	
 	@Test
-	void success() {
+	public void success() {
 		ManageProvider compareProvider = testOperator.providerSearch("111122222");
 		assertNotNull(compareProvider);
 	}
 	
 	@Test
-	void fail() {
+	public void fail() {
 		ManageMember compareMem = testOperator.memberSearch("8");
 		assertNull(compareMem);
 	}
 	
 
 	@Test
-	void testAddMember() {
+	public void testAddMember() {
 		testOperator.insertMember(memberJoe);
 		ManageMember compareMember = testOperator.memberSearch("111122224");
 		
@@ -64,7 +70,7 @@ class OperatorTest {
 	}
 	
 	@Test
-	void testAddProvider() {
+	public void testAddProvider() {
 		testOperator.insertProvider(providerJohn);
 		ManageProvider compareProvider = testOperator.providerSearch("444455556");
 		
@@ -72,14 +78,14 @@ class OperatorTest {
 	}
 	
 	@Test
-	void testdeleteMember() {
+	public void testdeleteMember() {
 		testOperator.deleteMember(memberJoe);
 		ManageProvider compareProvider = testOperator.providerSearch("111122224");
 		assertNull(compareProvider);
 	}
 	
 	@Test
-	void testdeleteProvider() {
+	public void testdeleteProvider() {
 		testOperator.deleteProvider(providerJohn);
 		ManageProvider compareProvider = testOperator.providerSearch("444455556");
 		assertNull(compareProvider);
