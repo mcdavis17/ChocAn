@@ -33,12 +33,15 @@ public class ManageProviderTest {
       }
       @Test public void sanityTest() {
       testing.setCity("New Orleans");
+<<<<<<< HEAD
       //testing.setCity(testing.findName());
+=======
+      testing.setCity(testing.findCity());
+>>>>>>> branch 'master' of https://mcdavis17@bitbucket.org/mshaque35/cs200fall2018s2team3.git
       assertEquals("New Orleans", testing.findCity());
       }
-      @Test public void ExceptionTest() {
-      testing.setName("");
-      testing.setName(testing.findName());
-      assertEquals("Provider Profile needs to be completed...Value is missing", testing.findName());
+      @Test(expected = NumberFormatException.class)
+  	  public void ExceptionTest() {
+      testing.printManageProviderDetails();
       }
 }
