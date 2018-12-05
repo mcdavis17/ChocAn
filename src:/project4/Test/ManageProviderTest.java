@@ -33,11 +33,6 @@ public class ManageProviderTest {
       }
       @Test public void sanityTest() {
       testing.setCity("New Orleans");
-<<<<<<< HEAD
-      //testing.setCity(testing.findName());
-=======
-      testing.setCity(testing.findCity());
->>>>>>> branch 'master' of https://mcdavis17@bitbucket.org/mshaque35/cs200fall2018s2team3.git
       assertEquals("New Orleans", testing.findCity());
       }
       @Test(expected = NumberFormatException.class)
