@@ -31,20 +31,18 @@
     </path>
     <target name="init">
         <mkdir dir="bin"/>
-    	<mkdir dir="release:"/>
-    	<mkdir dir="release:"/>
-
+    	<mkdir dir="release"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src:">
             	<exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         	</copy>
-    				 <jar destfile="release/ChocAn.jar">
+    				 <jar destfile="release//ChocAn.jar">
     						<fileset dir="bin/" />
-    						<fileset dir="release:" includes="**/*.java"/>
+    						<fileset dir="release/" includes="**/*.java"/>
     						<manifest>
-    							<attribute name ="ChocAn" value="chocAn.Driver"/>
+    							<attribute name ="Main-Class" value="project4.Terminal"/>
     						</manifest>
     				</jar>
     </target>
