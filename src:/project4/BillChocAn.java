@@ -61,7 +61,7 @@ public class BillChocAn {
 		getComments(scanner);
 		writeToFile();
 		fee = service.getServiceFee();
-		System.out.println("Fee is: " + fee + "\n");
+		System.out.println("Fee is: $" + fee + "\n");
 		System.out.println("File \"" + dos + "_Bill_Report.txt\" has been created with the information.\n");
 		
 	}
@@ -121,8 +121,10 @@ public class BillChocAn {
 	 * @param member member
 	 */
 	private void verifyValidity(ManageMember member) {
-		if (Objects.equals(member.getMemberStatus(), "valid") )
+		if (member.getMemberStatus().equalsIgnoreCase("valid") ) {
+			System.out.println("Validated");
 			return;
+		}
 		else {
 			System.out.println("Member Status: " + member.getMemberStatus() );
 			throw new IllegalArgumentException("Member not vaild");
@@ -135,7 +137,7 @@ public class BillChocAn {
 	 * @param scanner command line input
 	 */
 	private void getDOS(Scanner scanner) {
-		System.out.println("Enter the date the service was provided: ");
+		System.out.println("Enter the date the service was provided (MM-DD-YYYY): ");
 		dos = scanner.next();
 	}
 
@@ -146,7 +148,7 @@ public class BillChocAn {
 	 */
 	private void doubleCheckService(Scanner scanner) {
 		System.out.println( "The code " + serviceCode + " is for " + service.getServiceName() );
-		System.out.println("Is this correct?");
+		System.out.println("Is this correct? (Yes or No)");
 		input = scanner.next();
 		boolean isActive = true;
 	
@@ -171,7 +173,7 @@ public class BillChocAn {
 	 * @param scanner command line input
 	 */
 	private void getComments(Scanner scanner) {
-		System.out.println("Would you like to add comments? (100 character max)");
+		System.out.println("Would you like to add comments[100 character max]? (Yes or No)");
 		String input = scanner.next();
 		if( Objects.equals(input, "yes") || Objects.equals(input, "Yes") ) {
 			System.out.println("Enter comments:");
@@ -187,11 +189,22 @@ public class BillChocAn {
 	 * @param scanner command line input
 	 */
 	private void printDirectory(Scanner scanner) {
-		System.out.println("Would you like to see the provider directory?");
+		System.out.println("Would you like to see the provider directory? (Yes or No)");
 		String input = scanner.next();
-		if( Objects.equals(input, "yes") || Objects.equals(input, "Yes") ) {
-			ProviderDirectory direc = new ProviderDirectory(services);
-			direc.printToConsole();
+		//boolean activeQuestion = true;
+		while (true) {
+			if ( input.equalsIgnoreCase("yes") ) {
+				ProviderDirectory direc = new ProviderDirectory(services);
+				direc.printToConsole();
+				return;
+			} 
+			else if ( input.equalsIgnoreCase("no") ) {
+				return;
+			} 
+			else {
+				System.out.print("Enter 'Yes' or 'No'");
+				input = scanner.next();
+			}
 		}
 	}
 	
