@@ -114,7 +114,7 @@ public class Manager {
 				
 				// Invalid response
 				default:
-					System.out.println("Invalid reponse. Enter 'PM' or 'PR.'");
+					System.out.println("Invalid reponse. Please enter 'MR' 'PR', EFT, or SR.'");
 			}
 		}	
 	}
