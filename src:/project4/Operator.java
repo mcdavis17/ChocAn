@@ -1,5 +1,5 @@
 package project4;
-//class for opeartor functions
+//class for operator functions
 
 //package project4;
 

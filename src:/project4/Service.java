@@ -23,7 +23,7 @@ public class Service {
 	 * 
 	 * @param service service name
 	 * @param code service number 
-	 * @param fee servie fee
+	 * @param fee service fee
 	 */
 	public Service(String service, String code, double fee) {
 		serviceName = service;
@@ -46,7 +46,7 @@ public class Service {
 	/**
 	 * sets the service name
 	 * 
-	 * @param name servie name
+	 * @param name service name
 	 */
 	public void setServiceName(String name) {
 		serviceName = name;
@@ -71,9 +71,9 @@ public class Service {
 	}
 	
 	/**
-	 * Gets teh service name
+	 * Gets the service name
 	 * 
-	 * @return servie name
+	 * @return service name
 	 */
 	public String getServiceName() {
 		return serviceName;

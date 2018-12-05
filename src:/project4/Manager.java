@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * @author Calvin Clark
+ * @author Richard Anthony
  *
  */
 public class Manager {
