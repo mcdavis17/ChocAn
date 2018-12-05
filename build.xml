@@ -33,9 +33,7 @@
         <mkdir dir="bin"/>
     	<mkdir dir="release:"/>
     	<mkdir dir="release:"/>
-    			<copy includeemptydirs="false" todir="release">
-    			   <fileset dir="release"/>
-    			</copy>
+
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src:">
             	<exclude name="**/*.launch"/>
