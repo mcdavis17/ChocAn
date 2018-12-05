@@ -279,7 +279,7 @@ public class ChocAn{
 		int serviceNum;
 		ManageMember activeMember = memberLogin(scanner);
 		
-		if(activeMember.getMemberStatus().equals("Valid")) {
+		if(activeMember.getMemberStatus().equalsIgnoreCase("Valid")) {
 			System.out.println("Validated");
 			serviceNum = validateService(scanner, activeProvider, providerDirectory);
 			
